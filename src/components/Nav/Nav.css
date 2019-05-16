@@ -1,0 +1,10 @@
+.nav {
+  display: block;
+  height: 60px;
+  background-color: #ddd;
+  text-align: center;
+}
+
+.nav h2 {
+  padding: 15px;
+}
