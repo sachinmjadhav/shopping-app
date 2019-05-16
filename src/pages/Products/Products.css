@@ -1,0 +1,16 @@
+.products {
+  width: 1500px;
+  margin: 0 auto;
+}
+
+.products_title {
+  padding: 10px;
+  text-align: start;
+  font-size: 34px;
+  font-style: italic;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
