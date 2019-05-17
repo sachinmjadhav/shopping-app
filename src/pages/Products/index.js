@@ -5,6 +5,7 @@ import './Products.css';
 import Loader from '../../assets/loader.gif';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../../actions/productsAction';
+import _ from 'lodash';
 
 const Products = props => {
   const { products, loading, getProducts } = props;
@@ -13,7 +14,7 @@ const Products = props => {
     getProducts();
   }, [])
 
-  if(loading || !products) {
+  if(loading || _.isEmpty(products)) {
     return (
       <div className="loader">
         <img src={Loader} alt="" />

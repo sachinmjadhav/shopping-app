@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Card.css';
 
-const Card = ({ product }) => {
+import { addToCart } from '../../actions/cartActions'
+
+const Card = ({ product, addToCart, cartItems }) => {
+  console.log('cart', cartItems)
   return (
     <div className="card">
       <img src={product.image} alt=""/>
@@ -9,7 +13,7 @@ const Card = ({ product }) => {
         <h2>{product.name}</h2>
         <p>{product.description}</p>
         <div className="card_footer">
-          <button className="add_button">Add to Cart</button>
+          <button className="add_button" onClick={() => addToCart(product)}>Add to Cart</button>
           <p className="price">Rs. {product.price}</p>
         </div>
       </div>
@@ -17,4 +21,4 @@ const Card = ({ product }) => {
   );
 }
 
-export default Card;
+export default connect(state => ({ cartItems: state.cartItems }), { addToCart })(Card);
