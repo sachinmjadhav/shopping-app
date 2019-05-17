@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import './Products.css';
+import Loader from '../../assets/loader.gif';
 
 const Products = props => {
   const [ products, setProducts ] = useState([]);
@@ -12,7 +13,15 @@ const Products = props => {
         console.log(data)
         setProducts(data)
       });
-  }, [])
+  }, []);
+
+  if(products.length === 0) {
+    return (
+      <div className="loader">
+        <img src={Loader} alt="" />
+      </div>
+    )
+  }
   
   return (
     <div className="products">

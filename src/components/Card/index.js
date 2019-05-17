@@ -8,9 +8,9 @@ const Card = ({ product }) => {
       <div className="container">
         <h2>{product.name}</h2>
         <p>{product.description}</p>
-        <div className="card-footer">
-          <button>Add to Cart</button>
-          <p>Rs. {product.price}</p>
+        <div className="card_footer">
+          <button className="add_button">Add to Cart</button>
+          <p className="price">Rs. {product.price}</p>
         </div>
       </div>
     </div>
