@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import Card from '../../components/Card';
 import './Products.css';
 import Loader from '../../assets/loader.gif';
+import { Link } from 'react-router-dom';
+import { getProducts } from '../../actions/productsAction';
 
 const Products = props => {
-  const [ products, setProducts ] = useState([]);
+  const { products, loading, getProducts } = props;
 
   useEffect(() => {
-    fetch('https://5cdd205ab22718001417c389.mockapi.io/api/products')
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setProducts(data)
-      });
-  }, []);
+    getProducts();
+  }, [])
 
-  if(products.length === 0) {
+  if(loading || !products) {
     return (
       <div className="loader">
         <img src={Loader} alt="" />
@@ -25,12 +23,15 @@ const Products = props => {
   
   return (
     <div className="products">
-      <h2 className="products_title">Products</h2>
+      <div className="products_header">
+        <h2 className="products_title">Products</h2>
+        <Link to="/cart" className="cart_link">Cart</Link>
+      </div>
       <div className="cards">
-        {products.map(product => <Card product={product} key={product.id} />)}
+        {products && products.map(product => <Card product={product} key={product.id} />)}
       </div>
     </div>
   )
 }
 
-export default Products;
+export default connect(state => ({ products: state.products }), { getProducts })(Products);
