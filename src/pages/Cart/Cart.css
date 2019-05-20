@@ -2,7 +2,7 @@
   max-width: 700px;
   margin: 2rem auto;
   border: 1px solid #333;
-  min-height: 80vh;
+  min-height: 60vh;
   border-radius: 5px;
 }
 
@@ -54,8 +54,8 @@
 
 .cart_item {
   display: grid;
-  grid-template-columns: 30px 1fr 1fr 1fr;
-  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 20px;
+  align-content: center;
   justify-items: center;
   padding: 10px;  
 }

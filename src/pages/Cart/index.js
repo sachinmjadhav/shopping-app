@@ -22,18 +22,15 @@ const Cart = ({ cart, removeFromCart, incrementItemCount, decrementItemCount, ..
               <React.Fragment>
                 <ul className="cart_list">
                   <li className="cart_item">
-                    <span></span>
                     <h3>Item</h3>
                     <h3>Quantity</h3>
-                    <h3 className="cart_item_price">Price</h3>
+                    <h3>Price</h3>
+                    <span></span>
                   </li>
                   <hr />
                   {
                   cart.map(item => (
                       <li key={item.id} className="cart_item">
-                        <h3 className="cart_item_remove" onClick={() => removeFromCart(item.id)}>
-                          <i className="fas fa-times"></i>
-                        </h3>
                         <h3 className="cart_item_title">
                           {item.name}
                         </h3>
@@ -50,6 +47,9 @@ const Cart = ({ cart, removeFromCart, incrementItemCount, decrementItemCount, ..
                         </div>
                         <h3 className="cart_item_price">
                           Rs. {item.price * item.quantity}
+                        </h3>
+                        <h3 className="cart_item_remove" onClick={() => removeFromCart(item.id)}>
+                          <i className="fas fa-times"></i>
                         </h3>
                       </li>))
                   }

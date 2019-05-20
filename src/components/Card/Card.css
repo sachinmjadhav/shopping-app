@@ -51,7 +51,7 @@
 
 .add_button:after {
   content: '';
-  background-color: skyblue;
+  background-color: yellow;
   display: block;
   border-radius: 50%;
   position: absolute;

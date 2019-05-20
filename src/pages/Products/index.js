@@ -27,8 +27,8 @@ const Products = ({products, loading, getProducts, cart, ...props}) => {
         <h2 className="products_title">Products</h2>
         <Link to="/cart" className="cart_link">
           <i className="fas fa-shopping-cart">
-            <span className="cart_quantity">
-              {cart.length > 0 ? cart.length : null}
+            <span className="cart_quantity" style={cart.length > 0 ? { backgroundColor : 'orange' } : { backgroundColor: 'transparent' }}>
+              {cart.length > 0 ? cart.length : null}  
             </span>
           </i>
             Cart

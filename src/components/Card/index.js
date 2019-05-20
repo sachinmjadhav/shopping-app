@@ -16,7 +16,14 @@ const Card = ({ product, addToCart, cart }) => {
           <button
             className="add_button" 
             onClick={() => addToCart(product)} 
-            disabled={!product.availability}
+            disabled={!product.availability || find(cart, (c => c.id === product.id))}
+            style={
+              find(cart, (c => c.id === product.id)) 
+              ? {backgroundColor: 'orange'} 
+              : product.availability 
+                ? { backgroundColor: 'royalBlue' }
+                : { backgroundColor: 'gray' }
+            }
           >
             { product.availability ? find(cart, (c => c.id === product.id)) ? "Added to cart" : "Add to Cart" : "Not Available"}
           </button>
