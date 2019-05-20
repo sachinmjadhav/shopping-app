@@ -1,7 +1,7 @@
 import { GET_PRODUCTS, PRODUCTS_LOADING } from '../actions/types';
 
 const initialState = {
-  products: [],
+  productsList: [],
   loading: false
 };
 
@@ -15,10 +15,10 @@ export default (state = initialState, action) => {
     case GET_PRODUCTS:
       return {
         ...state,
-        products: action.payload,
+        productsList: action.payload,
         loading: false
       }
     default:
       return state;
   }
-}
+} 

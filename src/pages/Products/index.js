@@ -7,12 +7,11 @@ import { Link } from 'react-router-dom';
 import { getProducts } from '../../actions/productsAction';
 import _ from 'lodash';
 
-const Products = props => {
-  const { products, loading, getProducts } = props;
+const Products = ({products, loading, getProducts, ...props}) => {
 
   useEffect(() => {
     getProducts();
-  }, [])
+  }, [getProducts])
 
   if(loading || _.isEmpty(products)) {
     return (
@@ -26,13 +25,13 @@ const Products = props => {
     <div className="products">
       <div className="products_header">
         <h2 className="products_title">Products</h2>
-        <Link to="/cart" className="cart_link">Cart</Link>
+        <Link to="/cart" className="cart_link"> <i className="fas fa-shopping-cart"></i> Cart</Link>
       </div>
       <div className="cards">
-        {products && products.map(product => <Card product={product} key={product.id} />)}
+        {products && products.productsList.map(product => <Card product={product} key={product.id} />)}
       </div>
     </div>
   )
-}
+} 
 
 export default connect(state => ({ products: state.products }), { getProducts })(Products);

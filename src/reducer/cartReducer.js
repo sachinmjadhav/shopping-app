@@ -1,16 +1,30 @@
-import { ADD_ITEM_TO_CART } from '../actions/types';
+import { ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART } from '../actions/types';
 
-const initialState = {
-  cartItems: []
+const initialState = []
+
+const addToCart = (cart, product) => {
+  const cartItem = cart.find(c => c.id === product.id);
+  
+  // add 'quantity' property to new item
+  if(!product.quantity) {
+    product['quantity'] = 1;
+  }
+  
+  if(cartItem) {
+    cartItem.quantity++;
+  } else {
+    cart.push(product);
+  }
 }
 
 export default (state = initialState, action) => {
   switch(action.type) {
     case ADD_ITEM_TO_CART:
-      return {
-        ...state,
-        cartItems: [...cartItems, action.payload]
-      }
+      let updatedCart = state;
+      addToCart(updatedCart, action.payload)
+      return updatedCart;
+    case REMOVE_ITEM_FROM_CART:
+      return state.filter(item => item.id !== action.payload);
     default:
       return state;
   }
