@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeFromCart } from '../../actions/cartActions';
+import { removeFromCart, incrementItemCount, decrementItemCount } from '../../actions/cartActions';
 import { Link } from 'react-router-dom';
 import { isEmpty } from 'lodash'
 import './Cart.css';
 
-const Cart = ({ cart, removeFromCart, ...props }) => {
+const Cart = ({ cart, removeFromCart, incrementItemCount, decrementItemCount, ...props }) => {
   return (
     <React.Fragment>
       
@@ -24,7 +24,7 @@ const Cart = ({ cart, removeFromCart, ...props }) => {
                   <li className="cart_item">
                     <span></span>
                     <h3>Item</h3>
-                    <h3 className="cart_item_quantity">Quantity</h3>
+                    <h3>Quantity</h3>
                     <h3 className="cart_item_price">Price</h3>
                   </li>
                   <hr />
@@ -37,9 +37,17 @@ const Cart = ({ cart, removeFromCart, ...props }) => {
                         <h3 className="cart_item_title">
                           {item.name}
                         </h3>
-                        <h3 className="cart_item_quantity">
-                          {item.quantity}
-                        </h3>
+                        <div className="cart_item_quantity">
+                          <button className="cart_item_button" disabled={item.quantity === 1} onClick={() => decrementItemCount(item.id)}>
+                            <i className="fa fa-minus cart_item_decrement"></i>
+                          </button>
+                          <h3>
+                            {item.quantity}
+                          </h3>
+                          <button className="cart_item_button"  onClick={() => incrementItemCount(item.id)}>
+                            <i className="fa fa-plus cart_item_increment"></i>
+                          </button>
+                        </div>
                         <h3 className="cart_item_price">
                           Rs. {item.price * item.quantity}
                         </h3>
@@ -62,4 +70,4 @@ const mapStateToProps = state => ({
   cart: state.cart
 })
 
-export default connect(mapStateToProps, { removeFromCart })(Cart);
+export default connect(mapStateToProps, { removeFromCart, incrementItemCount, decrementItemCount })(Cart);

@@ -26,17 +26,34 @@
   text-align: center;
   text-decoration: none;
   color: #333;
-  width: 70px;
+  width: 100px;
   border: 1px solid #333;
   border-radius: 10px;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
+.fa-shopping-cart {
+  position: relative;
+  margin-right: 10px;
+}
+
+.cart_quantity {
+  position: absolute;
+  top: -0.9rem;
+  right: -10px;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
 .cart_link:hover {
   background-color: royalblue;
   color: white;
   border: none;
+}
+
+.cart_link:hover .cart_quantity {
+  background-color: royalblue;
 }
 
 .cards {

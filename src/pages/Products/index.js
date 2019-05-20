@@ -7,7 +7,7 @@ import { getProducts } from '../../actions/productsAction';
 import { isEmpty } from 'lodash';
 import './Products.css';
 
-const Products = ({products, loading, getProducts, ...props}) => {
+const Products = ({products, loading, getProducts, cart, ...props}) => {
 
   useEffect(() => {
     getProducts();
@@ -25,13 +25,25 @@ const Products = ({products, loading, getProducts, ...props}) => {
     <div className="products">
       <div className="products_header">
         <h2 className="products_title">Products</h2>
-        <Link to="/cart" className="cart_link"> <i className="fas fa-shopping-cart"></i> Cart</Link>
+        <Link to="/cart" className="cart_link">
+          <i className="fas fa-shopping-cart">
+            <span className="cart_quantity">
+              {cart.length > 0 ? cart.length : null}
+            </span>
+          </i>
+            Cart
+        </Link>
       </div>
       <div className="cards">
         {products && products.productsList.map(product => <Card product={product} key={product.id} />)}
       </div>
     </div>
   )
-} 
+}
 
-export default connect(state => ({ products: state.products }), { getProducts })(Products);
+const mapStateToProps = state => ({
+  products: state.products,
+  cart: state.cart
+})
+
+export default connect(mapStateToProps, { getProducts })(Products);

@@ -60,6 +60,26 @@
   padding: 10px;  
 }
 
+.cart_item_button {
+  background-color: transparent;
+  border: 1px solid #333;
+  outline: none;
+  padding: 3px 5px;
+  border-radius: 50%;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.cart_item_button:disabled {
+  cursor: auto;
+}
+
+.cart_item_quantity {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
 .cart_item_title {
   font-size: 1.1rem;
   font-weight: bold;
