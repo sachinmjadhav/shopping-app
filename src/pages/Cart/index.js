@@ -1,9 +1,9 @@
 import React from 'react';
-import './Cart.css';
 import { connect } from 'react-redux';
 import { removeFromCart } from '../../actions/cartActions';
 import { Link } from 'react-router-dom';
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
+import './Cart.css';
 
 const Cart = ({ cart, removeFromCart, ...props }) => {
   return (
@@ -16,7 +16,7 @@ const Cart = ({ cart, removeFromCart, ...props }) => {
       <div className="cart">
         <h2 className="cart_title">Your Order</h2>
         {
-          _.isEmpty(cart) 
+          isEmpty(cart) 
             ? (<h2 className="cart_no_items">Your cart is empty. <Link to="/" className="cart_add_item">Add Items.</Link></h2>) 
             : (
               <React.Fragment>

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Card from '../../components/Card';
-import './Products.css';
 import Loader from '../../assets/loader.gif';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../../actions/productsAction';
-import _ from 'lodash';
+import { isEmpty } from 'lodash';
+import './Products.css';
 
 const Products = ({products, loading, getProducts, ...props}) => {
 
@@ -13,7 +13,7 @@ const Products = ({products, loading, getProducts, ...props}) => {
     getProducts();
   }, [getProducts])
 
-  if(loading || _.isEmpty(products)) {
+  if(loading || isEmpty(products)) {
     return (
       <div className="loader">
         <img src={Loader} alt="" />

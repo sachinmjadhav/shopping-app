@@ -1,9 +1,10 @@
 import { ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART } from '../actions/types';
+import { find } from 'lodash'
 
 const initialState = []
 
 const addToCart = (cart, product) => {
-  const cartItem = cart.find(c => c.id === product.id);
+  const cartItem = find(cart, (c => c.id === product.id));
   
   // add 'quantity' property to new item
   if(!product.quantity) {
@@ -20,7 +21,7 @@ const addToCart = (cart, product) => {
 export default (state = initialState, action) => {
   switch(action.type) {
     case ADD_ITEM_TO_CART:
-      let updatedCart = state;
+      let updatedCart = [...state];
       addToCart(updatedCart, action.payload)
       return updatedCart;
     case REMOVE_ITEM_FROM_CART:
