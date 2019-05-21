@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import products from './productsReducer';
-import cart from './cartReducer';
+import productsReducer from './productsReducer';
+import cartReducer from './cartReducer';
+import adminReducer from './adminReducer';
+import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
-  products,
-  cart
+  products: productsReducer,
+  cart: cartReducer,
+  admin: adminReducer,
+  form: formReducer
 });

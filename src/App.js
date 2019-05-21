@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Products from './pages/Products';
 import Nav from './components/Nav';
 import Admin from './pages/Admin';
 import Cart from './pages/Cart';
+import './App.css';
 
 import { Provider } from 'react-redux';
 import store from './store';

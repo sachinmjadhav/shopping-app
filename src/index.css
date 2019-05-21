@@ -7,10 +7,6 @@
   box-sizing: border-box;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 @media (max-width: 450px) {
   * {
     font-size: 13px;
