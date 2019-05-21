@@ -36,6 +36,7 @@
 }
 
 .add_button {
+  position: relative;
   border: none;
   font-weight: bold;
   background-color: royalblue;
@@ -45,10 +46,37 @@
   border-radius: 20px;
   cursor: pointer;
   outline: none;
+  overflow: hidden;
+}
+
+.add_button:after {
+  content: '';
+  background-color: yellow;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  padding-top: 200%;
+  padding-left: 250%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.7s;
+}
+
+.add_button:active::after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
 }
 
 .add_button:hover {
   background-color: #245AD5;
+}
+
+.add_button:disabled {
+  background: gray;
+  cursor: auto;
 }
 
 .price {

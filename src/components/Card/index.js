@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { find } from 'lodash';
 import './Card.css';
 
-const Card = ({ product }) => {
+import { addToCart } from '../../actions/cartActions'
+
+const Card = ({ product, addToCart, cart }) => {
   return (
     <div className="card">
       <img src={product.image} alt=""/>
@@ -9,7 +13,20 @@ const Card = ({ product }) => {
         <h2>{product.name}</h2>
         <p>{product.description}</p>
         <div className="card_footer">
-          <button className="add_button">Add to Cart</button>
+          <button
+            className="add_button" 
+            onClick={() => addToCart(product)} 
+            disabled={!product.availability || find(cart, (c => c.id === product.id))}
+            style={
+              find(cart, (c => c.id === product.id)) 
+              ? {backgroundColor: 'orange'} 
+              : product.availability 
+                ? { backgroundColor: 'royalBlue' }
+                : { backgroundColor: 'gray' }
+            }
+          >
+            { product.availability ? find(cart, (c => c.id === product.id)) ? "Added to cart" : "Add to Cart" : "Not Available"}
+          </button>
           <p className="price">Rs. {product.price}</p>
         </div>
       </div>
@@ -17,4 +34,4 @@ const Card = ({ product }) => {
   );
 }
 
-export default Card;
+export default connect(state => ({ cart: state.cart }), { addToCart })(Card);
