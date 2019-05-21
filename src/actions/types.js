@@ -1,4 +1,5 @@
 export const UPDATE_ITEM = "UPDATE_ITEM";
+export const ADD_PRODUCT = "ADD_PRODUCT";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const PRODUCTS_LOADING = "PRODUCTS_LOADING";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";

@@ -57,6 +57,11 @@
   outline: none;
 }
 
+.form_submit:disabled {
+  background-color: gray;
+  border: 1px solid gray;
+}
+
 .field {
   position: relative;
 }
