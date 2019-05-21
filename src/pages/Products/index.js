@@ -13,7 +13,7 @@ const Products = ({products, loading, getProducts, cart, ...props}) => {
     getProducts();
   }, [getProducts])
 
-  if(loading || isEmpty(products)) {
+  if(products.loading || isEmpty(products)) {
     return (
       <div className="loader">
         <img src={Loader} alt="" />
@@ -25,6 +25,9 @@ const Products = ({products, loading, getProducts, cart, ...props}) => {
     <div className="products">
       <div className="products_header">
         <h2 className="products_title">Products</h2>
+        <Link to="/admin" className="cart_link">
+            Admin
+        </Link>
         <Link to="/cart" className="cart_link">
           <i className="fas fa-shopping-cart">
             <span className="cart_quantity" style={cart.length > 0 ? { backgroundColor : 'orange' } : { backgroundColor: 'transparent' }}>

@@ -1,0 +1,26 @@
+.admin {
+  max-width: 900px;
+  margin: auto;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.admin-backBtn {
+  text-decoration: none;
+  padding: 10px 0.5rem;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  color: #000;
+  font-weight: bold;
+}
+
+.admin-backBtn:hover {
+  background-color: royalblue;
+  color: white;
+  border: 1px solid royalblue;
+}

@@ -6,7 +6,7 @@ import {
 } from '../actions/types';
 import { find } from 'lodash'
 
-const initialState = []
+const initialState = [];
 
 const addToCart = (cart, product) => {
   const cartItem = find(cart, (c => c.id === product.id));

@@ -9,7 +9,7 @@ const Cart = ({ cart, removeFromCart, incrementItemCount, decrementItemCount, ..
   return (
     <React.Fragment>
       
-      <div className="cart_backBtn_wrapper">
+      <div className="cart_backBtn_wrapper"> 
         <Link to="/" className="cart_backBtn"> <i className="fas fa-hand-point-left"></i> Back</Link>
       </div>
 
