@@ -24,3 +24,20 @@
   color: white;
   border: 1px solid royalblue;
 }
+
+.add_product {
+  padding: 10px 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.add_product:hover {
+  background-color: royalblue;
+  color: white;
+  border: 1px solid royalblue;
+}
